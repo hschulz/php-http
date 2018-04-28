@@ -2,6 +2,7 @@
 
 namespace hschulz\Http\Request;
 
+use \hschulz\Http\HeaderCollection;
 use \hschulz\Http\Request\Header;
 use \hschulz\Network\AbstractIPAddress;
 use \hschulz\Network\IPv4;
@@ -76,7 +77,7 @@ class Request
     /**
      * The request headers.
      * @var HeaderCollection
-     */
+    */
     protected $header = null;
 
     /**
