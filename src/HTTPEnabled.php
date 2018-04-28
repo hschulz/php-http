@@ -2,12 +2,11 @@
 
 namespace hschulz\Http;
 
-use \hschulz\Http\HttpAware;
-
 /**
  *
  */
-interface HTTPEnabled extends HTTPAware {
+interface HTTPEnabled extends HTTPAware
+{
 
     /**
      *

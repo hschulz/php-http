@@ -5,8 +5,8 @@ namespace hschulz\Http\Request;
 /**
  * Contains HTTP request headers as constants.
  */
-interface Header {
-
+interface Header
+{
     /**
      * Content-Types that are acceptable.
      * @example Accept: text/plain

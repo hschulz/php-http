@@ -3,17 +3,18 @@
 namespace hschulz\Http\Client;
 
 use \hschulz\Http\HeaderCollection;
+use const \CURLOPT_HTTPHEADER;
+use const \CURLOPT_RETURNTRANSFER;
+use const \CURLOPT_URL;
 use function \curl_exec;
 use function \curl_init;
 use function \curl_setopt;
-use const \CURLOPT_HTTPHEADER;
-use const \CURLOPT_URL;
-use const \CURLOPT_RETURNTRANSFER;
 
 /**
  *
  */
-class Request {
+class Request
+{
 
     /**
      *
@@ -31,7 +32,8 @@ class Request {
      *
      * @param HeaderCollection $header
      */
-    public function __construct(HeaderCollection $header) {
+    public function __construct(HeaderCollection $header)
+    {
         $this->header = $header;
         $this->channel = curl_init();
     }
@@ -41,7 +43,8 @@ class Request {
      * @param string $url
      * @return mixed
      */
-    public function exec(string $url) {
+    public function exec(string $url)
+    {
 
         /* Temporary header storage */
         $header = [];
@@ -61,7 +64,8 @@ class Request {
      *
      * @return HeaderCollection
      */
-    public function getHeader(): HeaderCollection {
+    public function getHeader(): HeaderCollection
+    {
         return $this->header;
     }
 
@@ -69,7 +73,8 @@ class Request {
      *
      * @return resource
      */
-    public function getChannel() {
+    public function getChannel()
+    {
         return $this->channel;
     }
 
@@ -78,7 +83,8 @@ class Request {
      * @param HeaderCollection $header
      * @return void
      */
-    public function setHeader(HeaderCollection $header): void {
+    public function setHeader(HeaderCollection $header): void
+    {
         $this->header = $header;
     }
 
@@ -87,7 +93,8 @@ class Request {
      * @param resource $channel
      * @return void
      */
-    public function setChannel($channel): void {
+    public function setChannel($channel): void
+    {
         $this->channel = $channel;
     }
 }

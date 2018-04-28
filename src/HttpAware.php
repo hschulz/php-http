@@ -2,12 +2,11 @@
 
 namespace hschulz\Http;
 
-use \hschulz\Http\IncomingHTTPRequest;
-
 /**
  *
  */
-interface HttpAware {
+interface HttpAware
+{
 
     /**
      *

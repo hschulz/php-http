@@ -2,11 +2,10 @@
 
 namespace hschulz\Http;
 
+use \hschulz\Http\Request\Header;
 use \hschulz\Network\AbstractIPAddress;
 use \hschulz\Network\IPv4;
 use \hschulz\Network\Port;
-use \hschulz\Http\HeaderCollection;
-use \hschulz\Http\Request\Header;
 use function \filter_input_array;
 use function \gethostbyname;
 use function \ini_get;
@@ -18,8 +17,8 @@ use function \trim;
 /**
  *
  */
-class Request {
-
+class Request
+{
     const SERVER_FILTER = [
         'HTTP_HOST' => 0,
         'HTTP_USER_AGENT' => 0,
@@ -101,14 +100,15 @@ class Request {
     /**
      *
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->header = new HeaderCollection();
         $this->parseHeaders();
         $this->parseBody();
     }
 
-    protected function parseHeaders(): void {
-
+    protected function parseHeaders(): void
+    {
         $isParsed = $this->parseApacheHeaders();
 
         if ($isParsed) {
@@ -162,8 +162,8 @@ class Request {
         $this->isSecure = empty($data['HTTPS']) ? false : true;
     }
 
-    protected function parseApacheHeaders(): bool {
-
+    protected function parseApacheHeaders(): bool
+    {
         if (!function_exists('apache_request_headers')) {
             return false;
         }
@@ -181,8 +181,8 @@ class Request {
      *
      * @return string
      */
-    protected function getServerAddr(): string {
-
+    protected function getServerAddr(): string
+    {
         $isAvailable = is_callable('shell_exec');
 
         $isEnabled = stripos(ini_get('disable_functions'), 'shell_exec') === false;
@@ -198,8 +198,8 @@ class Request {
      *
      * @return void
      */
-    protected function parseBody(): void {
-
+    protected function parseBody(): void
+    {
         $sBody = file_get_contents('php://input');
 
         $this->rawBody = empty($sBody) ? '' : $sBody;
@@ -209,7 +209,8 @@ class Request {
      * Returns the raw request body.
      * @return string
      */
-    public function getRawBody(): string {
+    public function getRawBody(): string
+    {
         return $this->rawBody;
     }
 
@@ -217,7 +218,8 @@ class Request {
      * Returns the request header collection.
      * @return HeaderCollection
      */
-    public function getHeader(): HeaderCollection {
+    public function getHeader(): HeaderCollection
+    {
         return $this->header;
     }
 
@@ -226,7 +228,8 @@ class Request {
      * @param HeaderCollection $header
      * @return void
      */
-    public function setHeader(HTTPHeaderCollection $header): void {
+    public function setHeader(HTTPHeaderCollection $header): void
+    {
         $this->header = $header;
     }
 
@@ -234,7 +237,8 @@ class Request {
      *
      * @return AbstractIPAddress
      */
-    public function getServerAddress(): AbstractIPAddress {
+    public function getServerAddress(): AbstractIPAddress
+    {
         return $this->serverIp;
     }
 
@@ -243,7 +247,8 @@ class Request {
      * @param AbstractIPAddress $address
      * @return void
      */
-    public function setServerAddress(AbstractIPAddress $address): void {
+    public function setServerAddress(AbstractIPAddress $address): void
+    {
         $this->serverIp = $address;
     }
 
@@ -251,7 +256,8 @@ class Request {
      *
      * @return Port
      */
-    public function getPort(): Port {
+    public function getPort(): Port
+    {
         return $this->port;
     }
 
@@ -260,7 +266,8 @@ class Request {
      * @param Port $port
      * @return void
      */
-    public function setPort(Port $port): void {
+    public function setPort(Port $port): void
+    {
         $this->port = $port;
     }
 
@@ -268,7 +275,8 @@ class Request {
      *
      * @return string
      */
-    public function getProtocol(): string {
+    public function getProtocol(): string
+    {
         return $this->protocol;
     }
 
@@ -277,7 +285,8 @@ class Request {
      * @param string $protocol
      * @return void
      */
-    public function setProtocol(string $protocol): void {
+    public function setProtocol(string $protocol): void
+    {
         $this->protocol = $protocol;
     }
 
@@ -285,7 +294,8 @@ class Request {
      *
      * @return string
      */
-    public function getRequestMethod(): string {
+    public function getRequestMethod(): string
+    {
         return $this->requestMethod;
     }
 
@@ -294,7 +304,8 @@ class Request {
      * @param string $method
      * @return void
      */
-    public function setRequestMethod(string $method): void {
+    public function setRequestMethod(string $method): void
+    {
         $this->requestMethod = $method;
     }
 
@@ -302,7 +313,8 @@ class Request {
      *
      * @return string
      */
-    public function getRequestUri(): string {
+    public function getRequestUri(): string
+    {
         return $this->requestUri;
     }
 
@@ -310,7 +322,8 @@ class Request {
      *
      * @param string $uri
      */
-    public function setRequestUri(string $uri) {
+    public function setRequestUri(string $uri)
+    {
         $this->requestUri = $uri;
     }
 
@@ -318,7 +331,8 @@ class Request {
      *
      * @return string
      */
-    public function getRequestTime() {
+    public function getRequestTime()
+    {
         return $this->requestTime;
     }
 
@@ -326,7 +340,8 @@ class Request {
      *
      * @param string $sRequestTime
      */
-    public function setRequestTime($sRequestTime) {
+    public function setRequestTime($sRequestTime)
+    {
         $this->requestTime = $sRequestTime;
     }
 
@@ -334,7 +349,8 @@ class Request {
      *
      * @return bool If it is a secure request
      */
-    public function isSecure(): bool {
+    public function isSecure(): bool
+    {
         return $this->isSecure;
     }
 
@@ -342,7 +358,8 @@ class Request {
      *
      * @param bool $isSecure
      */
-    public function setSecure(bool $isSecure): void {
+    public function setSecure(bool $isSecure): void
+    {
         $this->isSecure = $isSecure;
     }
 }

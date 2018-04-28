@@ -7,7 +7,8 @@ use \hschulz\Http\HeaderCollection;
 /**
  *
  */
-class Response {
+class Response
+{
 
     /**
      * The response headers sent when sending the response.
@@ -24,7 +25,8 @@ class Response {
     /**
      *
      */
-    public function __construct(string $body = '', ?HeaderCollection $header = null) {
+    public function __construct(string $body = '', ?HeaderCollection $header = null)
+    {
         $this->body   = $body;
         $this->header = $header ?? new HeaderCollection();
     }
@@ -33,7 +35,8 @@ class Response {
      *
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return (string) $this->header . $this->body;
     }
 
@@ -42,7 +45,8 @@ class Response {
      * @param string $content
      * @return void
      */
-    public function setBody($content): void {
+    public function setBody($content): void
+    {
         $this->body = $content;
     }
 
@@ -50,7 +54,8 @@ class Response {
      *
      * @return string
      */
-    public function getBody(): string {
+    public function getBody(): string
+    {
         return $this->body;
     }
 
@@ -59,7 +64,8 @@ class Response {
      * @param HeaderCollection $header
      * @return void
      */
-    public function setHeader(HeaderCollection $header): void {
+    public function setHeader(HeaderCollection $header): void
+    {
         $this->header = $header;
     }
 
@@ -67,7 +73,8 @@ class Response {
      *
      * @return HeaderCollection
      */
-    public function getHeader(): HeaderCollection {
+    public function getHeader(): HeaderCollection
+    {
         return $this->header;
     }
 
@@ -75,8 +82,8 @@ class Response {
      *
      * @return void
      */
-    public function send(): void {
-
+    public function send(): void
+    {
         $this->header->emitHeaders();
 
         echo $this->body ?? '';

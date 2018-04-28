@@ -8,8 +8,8 @@ use function \header;
 /**
  *
  */
-class HeaderCollection extends ArrayObject {
-
+class HeaderCollection extends ArrayObject
+{
     /**
      *
      * @var string
@@ -20,8 +20,8 @@ class HeaderCollection extends ArrayObject {
      *
      * @return string
      */
-    public function __toString() {
-
+    public function __toString()
+    {
         $out = '';
 
         foreach ($this as $name => $value) {
@@ -38,7 +38,8 @@ class HeaderCollection extends ArrayObject {
      * @param string $value
      * @return bool
      */
-    public function addHeader(string $name, string $value): bool {
+    public function addHeader(string $name, string $value): bool
+    {
 
         /* Initialize the return value */
         $isSet = false;
@@ -60,7 +61,8 @@ class HeaderCollection extends ArrayObject {
      * @param string $name
      * @return string
      */
-    public function getHeader(string $name): string {
+    public function getHeader(string $name): string
+    {
 
         /* If the parameter is found it is returned */
         return $this[$name] ?? '';
@@ -71,7 +73,8 @@ class HeaderCollection extends ArrayObject {
      *
      * @return array
      */
-    public function getHeaders(): array {
+    public function getHeaders(): array
+    {
         return $this->getArrayCopy();
     }
 
@@ -81,7 +84,8 @@ class HeaderCollection extends ArrayObject {
      * @param string $name
      * @return void
      */
-    public function deleteHeader(string $name): void {
+    public function deleteHeader(string $name): void
+    {
         $this->offsetUnset($name);
     }
 
@@ -90,7 +94,8 @@ class HeaderCollection extends ArrayObject {
      *
      * @return void
      */
-    public function resetHeaders(): void {
+    public function resetHeaders(): void
+    {
         $this->exchangeArray([]);
     }
 
@@ -98,7 +103,8 @@ class HeaderCollection extends ArrayObject {
      *
      * @return void
      */
-    public function emitHeaders(): void {
+    public function emitHeaders(): void
+    {
         foreach ($this as $name => $value) {
             header($name . ': ' . $value);
         }

@@ -2,14 +2,12 @@
 
 namespace hschulz\Http\Request;
 
-use \hschulz\Http\Request\Http10Methods;
-
 /**
  * Contains all HTTP/1.1 request methods as constants.
  * @link http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html
  */
-interface Http11Methods extends Http10Methods {
-
+interface Http11Methods extends Http10Methods
+{
     /**
      * The OPTIONS method represents a request for information about the
      * communication options available on the request/response chain identified

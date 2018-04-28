@@ -5,8 +5,8 @@ namespace hschulz\Http\Response;
 /**
  *
  */
-interface Header {
-
+interface Header
+{
     /**
      * What partial content range types this server supports.
      * @example Accept-Ranges: bytes
