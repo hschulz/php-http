@@ -1,6 +1,6 @@
 <?php
 
-namespace hschulz\Http\Tests;
+namespace hschulz\Http\Tests\Unit;
 
 use \hschulz\Http\HeaderCollection;
 use \hschulz\Http\Request\Header as RequestHeader;

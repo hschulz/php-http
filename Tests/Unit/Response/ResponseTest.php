@@ -1,6 +1,6 @@
 <?php
 
-namespace hschulz\Http\Response\Tests;
+namespace hschulz\Http\Response\Tests\Unit\Response;
 
 use \hschulz\Http\HeaderCollection;
 use \hschulz\Http\Response\Header;
