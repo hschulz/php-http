@@ -6,8 +6,8 @@ namespace hschulz\Http\Request;
  * Contains HTTP/1.0 request methods as constants.
  * @link http://www.w3.org/Protocols/HTTP/1.0/draft-ietf-http-spec.html#Methods
  */
-interface Http10Methods {
-
+interface Http10Methods
+{
     /**
      * The GET method means retrieve whatever information (in the form of
      * an entity) is identified by the Request-URI.

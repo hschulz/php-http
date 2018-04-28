@@ -8,7 +8,8 @@ use \hschulz\Http\Response\Header as ResponseHeader;
 use \PHPUnit\Framework\Error\Error;
 use \PHPUnit\Framework\TestCase;
 
-final class HeaderCollectionTest extends TestCase {
+final class HeaderCollectionTest extends TestCase
+{
 
     /**
      *
@@ -19,7 +20,8 @@ final class HeaderCollectionTest extends TestCase {
     /**
      *
      */
-    protected function setUp() {
+    protected function setUp()
+    {
         $this->headers = new HeaderCollection();
         $this->headers[RequestHeader::ACCEPT] = 'text/plain';
         $this->headers[RequestHeader::CACHE_CONTROL] = 'no-cache';
@@ -28,15 +30,16 @@ final class HeaderCollectionTest extends TestCase {
     /**
      *
      */
-    protected function tearDown() {
+    protected function tearDown()
+    {
         $this->headers = null;
     }
 
     /**
      *
      */
-    public function testCanAddHeader() {
-
+    public function testCanAddHeader()
+    {
         $this->headers->addHeader(RequestHeader::CHARSET, 'utf-8');
         $this->headers[RequestHeader::HOST] = 'localhost';
 
@@ -50,8 +53,8 @@ final class HeaderCollectionTest extends TestCase {
     /**
      *
      */
-    public function testCanModifyHeader() {
-
+    public function testCanModifyHeader()
+    {
         $this->headers[ResponseHeader::PRAGMA] = 'no-cache';
 
         $this->assertEquals('no-cache', $this->headers[ResponseHeader::PRAGMA]);
@@ -63,8 +66,8 @@ final class HeaderCollectionTest extends TestCase {
         $this->assertEquals('cache', $this->headers->getHeader(ResponseHeader::PRAGMA));
     }
 
-    public function testCanDeleteHeader() {
-
+    public function testCanDeleteHeader()
+    {
         $this->expectException(Error::class);
 
         $this->headers->deleteHeader(RequestHeader::ACCEPT);
@@ -77,8 +80,8 @@ final class HeaderCollectionTest extends TestCase {
     /**
      *
      */
-    public function testCanResetHeaders() {
-
+    public function testCanResetHeaders()
+    {
         $this->headers->resetHeaders();
 
         $this->assertEmpty($this->headers->getArrayCopy());
@@ -87,8 +90,8 @@ final class HeaderCollectionTest extends TestCase {
         $this->assertEmpty((string) $this->headers);
     }
 
-    public function testCanGetStringRepresentation() {
-
+    public function testCanGetStringRepresentation()
+    {
         $this->headers->resetHeaders();
 
         $this->headers['Test'] = 'test';
@@ -99,8 +102,8 @@ final class HeaderCollectionTest extends TestCase {
     /**
      * @runInSeparateProcess
      */
-    public function testCanEmitHeaders() {
-
+    public function testCanEmitHeaders()
+    {
         $expected = ['Accept: text/plain', 'Cache-Control: no-cache'];
 
         $this->headers->emitHeaders();
