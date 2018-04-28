@@ -1,6 +1,6 @@
 <?php
 
-namespace hschulz\Http;
+namespace hschulz\Http\Request;
 
 use \hschulz\Http\Request\Header;
 use \hschulz\Network\AbstractIPAddress;
