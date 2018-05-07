@@ -6,7 +6,9 @@ use \hschulz\Http\HeaderCollection;
 use \hschulz\Network\AbstractIPAddress;
 use \hschulz\Network\IPv4;
 use \hschulz\Network\Port;
+use function \apache_request_headers;
 use function \filter_input_array;
+use function \function_exists;
 use function \gethostbyname;
 use function \ini_get;
 use function \is_callable;
@@ -228,7 +230,7 @@ class Request
      * @param HeaderCollection $header
      * @return void
      */
-    public function setHeader(HTTPHeaderCollection $header): void
+    public function setHeader(HeaderCollection $header): void
     {
         $this->header = $header;
     }
@@ -322,7 +324,7 @@ class Request
      *
      * @param string $uri
      */
-    public function setRequestUri(string $uri)
+    public function setRequestUri(string $uri): void
     {
         $this->requestUri = $uri;
     }
@@ -331,18 +333,18 @@ class Request
      *
      * @return string
      */
-    public function getRequestTime()
+    public function getRequestTime(): string
     {
         return $this->requestTime;
     }
 
     /**
      *
-     * @param string $sRequestTime
+     * @param string $requestTime
      */
-    public function setRequestTime($sRequestTime)
+    public function setRequestTime(string $requestTime): void
     {
-        $this->requestTime = $sRequestTime;
+        $this->requestTime = $requestTime;
     }
 
     /**
