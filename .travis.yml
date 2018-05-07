@@ -2,6 +2,10 @@ language: php
 
 php: 7.1
 
+notifications:
+    email:
+        on_success: never
+
 before_script:
     - travis_retry composer self-update
     - travis_retry composer update
