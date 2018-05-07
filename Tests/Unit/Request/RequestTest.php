@@ -2,9 +2,9 @@
 
 namespace hschulz\Http\Response\Tests\Unit\Response;
 
-use \PHPUnit\Framework\TestCase;
-use \hschulz\Http\Request\Request;
 use \hschulz\Http\HeaderCollection;
+use \hschulz\Http\Request\Request;
+use \PHPUnit\Framework\TestCase;
 use function \time;
 
 final class RequestTest extends TestCase
@@ -16,14 +16,15 @@ final class RequestTest extends TestCase
      */
     protected $request = null;
 
-    protected function setUp() {
+    protected function setUp()
+    {
         $this->request = new Request();
         $this->request->setRequestUri('/test/unit');
         $this->request->setRequestTime(time());
     }
 
-    protected function tearDown() {
-
+    protected function tearDown()
+    {
     }
 
     public function testCanParseHeaders(): void
