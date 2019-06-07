@@ -15,7 +15,7 @@
         "hschulz/php-network-stuff": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.1.4"
+        "phpunit/phpunit": "^7.1.4 || ^8.0.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
