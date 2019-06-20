@@ -2,14 +2,14 @@
 
 namespace hschulz\Http\Request;
 
-use \hschulz\Http\HeaderCollection;
-use \hschulz\Network\AbstractIPAddress;
-use \hschulz\Network\IPv4;
-use \hschulz\Network\Port;
 use function \apache_request_headers;
 use function \filter_input_array;
 use function \function_exists;
 use function \gethostbyname;
+use \hschulz\Http\HeaderCollection;
+use \hschulz\Network\AbstractIPAddress;
+use \hschulz\Network\IPv4;
+use \hschulz\Network\Port;
 use function \ini_get;
 use function \is_callable;
 use function \shell_exec;
