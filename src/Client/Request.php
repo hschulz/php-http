@@ -2,13 +2,13 @@
 
 namespace hschulz\Http\Client;
 
-use \hschulz\Http\HeaderCollection;
-use const \CURLOPT_HTTPHEADER;
-use const \CURLOPT_RETURNTRANSFER;
-use const \CURLOPT_URL;
 use function \curl_exec;
 use function \curl_init;
 use function \curl_setopt;
+use const \CURLOPT_HTTPHEADER;
+use const \CURLOPT_RETURNTRANSFER;
+use const \CURLOPT_URL;
+use \hschulz\Http\HeaderCollection;
 
 /**
  *
