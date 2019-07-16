@@ -5,10 +5,10 @@ namespace hschulz\Http\Response\Tests\Unit\Response;
 use \hschulz\Http\HeaderCollection;
 use \hschulz\Http\Response\Header;
 use \hschulz\Http\Response\Response;
-use \PHPUnit\Framework\TestCase;
 use function \ob_end_clean;
 use function \ob_get_contents;
 use function \ob_start;
+use \PHPUnit\Framework\TestCase;
 use function \xdebug_get_headers;
 
 final class ResponseTest extends TestCase
