@@ -1,33 +1,33 @@
 <?php
 
-namespace hschulz\Http\Response\Tests\Unit\Response;
+namespace Hschulz\Http\Response\Tests\Unit\Response;
 
-use \hschulz\Http\HeaderCollection;
-use \hschulz\Http\Response\Header;
-use \hschulz\Http\Response\Response;
-use \PHPUnit\Framework\TestCase;
-use function \ob_end_clean;
-use function \ob_get_contents;
-use function \ob_start;
-use function \xdebug_get_headers;
+use Hschulz\Http\HeaderCollection;
+use Hschulz\Http\Response\Header;
+use Hschulz\Http\Response\Response;
+use PHPUnit\Framework\TestCase;
+use function ob_end_clean;
+use function ob_get_contents;
+use function ob_start;
+use function xdebug_get_headers;
 
 final class ResponseTest extends TestCase
 {
-    public function testCanBeCreatedWithoutArguments()
+    public function testCanBeCreatedWithoutArguments(): void
     {
         $res = new Response();
 
         $this->assertEmpty((string) $res);
     }
 
-    public function testCanBeCreatedWithBodyOnly()
+    public function testCanBeCreatedWithBodyOnly(): void
     {
         $res = new Response('test');
 
         $this->assertEquals('test', (string) $res);
     }
 
-    public function testCanBeCreatedWithHeaderOnly()
+    public function testCanBeCreatedWithHeaderOnly(): void
     {
         $header = new HeaderCollection();
         $header->addHeader(Header::SERVER, 'localhost');
@@ -37,7 +37,7 @@ final class ResponseTest extends TestCase
         $this->assertEquals((string) $header, (string) $res);
     }
 
-    public function testCanSetBody()
+    public function testCanSetBody(): void
     {
         $res = new Response();
 
@@ -46,7 +46,7 @@ final class ResponseTest extends TestCase
         $this->assertEquals('test', (string) $res);
     }
 
-    public function testCanGetBody()
+    public function testCanGetBody(): void
     {
         $res = new Response('test');
 
@@ -55,7 +55,7 @@ final class ResponseTest extends TestCase
         $this->assertEquals('test', $body);
     }
 
-    public function testCanSetHeaders()
+    public function testCanSetHeaders(): void
     {
         $header = new HeaderCollection();
         $header->addHeader(Header::X_POWERED_BY, 'phpunit');
@@ -67,7 +67,7 @@ final class ResponseTest extends TestCase
         $this->assertEquals((string) $header, (string) $res);
     }
 
-    public function testCanGetHeaders()
+    public function testCanGetHeaders(): void
     {
         $header = new HeaderCollection();
 
@@ -81,7 +81,7 @@ final class ResponseTest extends TestCase
     /**
      * @runInSeparateProcess
      */
-    public function testCanSendResponse()
+    public function testCanSendResponse(): void
     {
         $expected = ['Allow: GET', 'Cache-Control: max-age=3600'];
 

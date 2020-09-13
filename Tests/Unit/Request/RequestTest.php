@@ -1,30 +1,32 @@
 <?php
 
-namespace hschulz\Http\Response\Tests\Unit\Response;
+declare(strict_types=1);
 
-use \hschulz\Http\HeaderCollection;
-use \hschulz\Http\Request\Request;
-use \PHPUnit\Framework\TestCase;
-use function \time;
+namespace Hschulz\Http\Response\Tests\Unit\Response;
+
+use Hschulz\Http\HeaderCollection;
+use Hschulz\Http\Request\Request;
+use PHPUnit\Framework\TestCase;
+use function time;
 
 final class RequestTest extends TestCase
 {
-
     /**
      *
      * @var Request
      */
-    protected $request = null;
+    protected ?Request $request = null;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->request = new Request();
         $this->request->setRequestUri('/test/unit');
         $this->request->setRequestTime(time());
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
+        $this->request = null;
     }
 
     public function testCanParseHeaders(): void
@@ -51,7 +53,7 @@ final class RequestTest extends TestCase
         $this->assertEquals('/test/unit', $this->request->getRequestUri());
     }
 
-    public function testHas(): void
+    public function testHasTime(): void
     {
         $this->assertLessThanOrEqual(time(), $this->request->getRequestTime());
     }

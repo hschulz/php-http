@@ -1,12 +1,12 @@
 <?php
 
-namespace hschulz\Http\Tests\Unit;
+namespace Hschulz\Http\Tests\Unit;
 
-use \hschulz\Http\HeaderCollection;
-use \hschulz\Http\Request\Header as RequestHeader;
-use \hschulz\Http\Response\Header as ResponseHeader;
-use \PHPUnit\Framework\Error\Error;
-use \PHPUnit\Framework\TestCase;
+use Hschulz\Http\HeaderCollection;
+use Hschulz\Http\Request\Header as RequestHeader;
+use Hschulz\Http\Response\Header as ResponseHeader;
+use PHPUnit\Framework\Error\Error;
+use PHPUnit\Framework\TestCase;
 
 final class HeaderCollectionTest extends TestCase
 {
@@ -15,12 +15,12 @@ final class HeaderCollectionTest extends TestCase
      *
      * @var HeaderCollection
      */
-    protected $headers = null;
+    protected ?HeaderCollection $headers = null;
 
     /**
      *
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->headers = new HeaderCollection();
         $this->headers[RequestHeader::ACCEPT] = 'text/plain';
@@ -30,7 +30,7 @@ final class HeaderCollectionTest extends TestCase
     /**
      *
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->headers = null;
     }
@@ -38,7 +38,7 @@ final class HeaderCollectionTest extends TestCase
     /**
      *
      */
-    public function testCanAddHeader()
+    public function testCanAddHeader(): void
     {
         $this->headers->addHeader(RequestHeader::CHARSET, 'utf-8');
         $this->headers[RequestHeader::HOST] = 'localhost';
@@ -53,7 +53,7 @@ final class HeaderCollectionTest extends TestCase
     /**
      *
      */
-    public function testCanModifyHeader()
+    public function testCanModifyHeader(): void
     {
         $this->headers[ResponseHeader::PRAGMA] = 'no-cache';
 
@@ -66,9 +66,9 @@ final class HeaderCollectionTest extends TestCase
         $this->assertEquals('cache', $this->headers->getHeader(ResponseHeader::PRAGMA));
     }
 
-    public function testCanDeleteHeader()
+    public function testCanDeleteHeader(): void
     {
-        $this->expectException(Error::class);
+        $this->expectError(Error::class);
 
         $this->headers->deleteHeader(RequestHeader::ACCEPT);
         $this->assertEmpty($this->headers[RequestHeader::ACCEPT]);
@@ -80,7 +80,7 @@ final class HeaderCollectionTest extends TestCase
     /**
      *
      */
-    public function testCanResetHeaders()
+    public function testCanResetHeaders(): void
     {
         $this->headers->resetHeaders();
 
@@ -90,7 +90,7 @@ final class HeaderCollectionTest extends TestCase
         $this->assertEmpty((string) $this->headers);
     }
 
-    public function testCanGetStringRepresentation()
+    public function testCanGetStringRepresentation(): void
     {
         $this->headers->resetHeaders();
 
@@ -102,7 +102,7 @@ final class HeaderCollectionTest extends TestCase
     /**
      * @runInSeparateProcess
      */
-    public function testCanEmitHeaders()
+    public function testCanEmitHeaders(): void
     {
         $expected = ['Accept: text/plain', 'Cache-Control: no-cache'];
 
