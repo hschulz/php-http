@@ -1,28 +1,24 @@
-preset: psr2
+risky: true
+
+preset: psr12
 
 enabled:
     - alpha_ordered_imports
     - combine_consecutive_issets
     - combine_consecutive_unsets
-    - concat_with_spaces
     - const_separation
     - dir_constant
-    - function_typehint_space
     - hash_to_slash_comment
-    - lowercase_cast
     - native_function_casing
-    - new_with_braces
     - no_alias_functions
     - no_blank_lines_after_phpdoc
     - no_empty_statement
     - no_extra_consecutive_blank_lines
-    - no_leading_namespace_whitespace
     - no_short_bool_cast
     - no_singleline_whitespace_before_semicolons
     - no_trailing_comma_in_singleline_array
     - no_unneeded_control_parentheses
     - no_unused_imports
-    - no_whitespace_in_blank_line
     - phpdoc_no_package
     - phpdoc_scalar
     - self_accessor
