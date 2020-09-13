@@ -11,26 +11,30 @@
         }
     ],
     "require": {
-        "php": "^7.1.0",
-        "hschulz/php-network-stuff": "*"
+        "ext-curl": "*",
+        "hschulz/php-network-stuff": "*",
+        "php": "^7.4.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.1.4 || ^8.0.0"
+        "phpunit/phpunit": "^9.3.10"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "hschulz\\Http\\": "src"
+            "Hschulz\\Http\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "hschulz\\Http\\Tests\\": "Tests"
+            "Hschulz\\Http\\Tests\\": "Tests"
         }
     },
     "config": {
         "optimize-autoloader": true,
         "apcu-autoloader": true
+    },
+    "scripts": {
+        "test": "@php vendor/phpunit/phpunit/phpunit --bootstrap=./vendor/autoload.php --whitelist=./src/ --testdox ./Tests/"
     }
 }
