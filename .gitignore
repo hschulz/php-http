@@ -1,3 +1,8 @@
-/nbproject/
-/vendor/
-coverage.xml
+# IDE
+nbproject
+.vscode
+.idea
+
+# Composer
+vendor
+composer.phar
