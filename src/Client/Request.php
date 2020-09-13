@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Hschulz\Http\Client;
 
-use Hschulz\Http\HeaderCollection;
-use const CURLOPT_HTTPHEADER;
-use const CURLOPT_RETURNTRANSFER;
-use const CURLOPT_URL;
 use function curl_exec;
 use function curl_init;
 use function curl_setopt;
+use const CURLOPT_HTTPHEADER;
+use const CURLOPT_RETURNTRANSFER;
+use const CURLOPT_URL;
+use Hschulz\Http\HeaderCollection;
 
 /**
  *

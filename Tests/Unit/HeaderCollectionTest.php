@@ -10,7 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 final class HeaderCollectionTest extends TestCase
 {
-
     /**
      *
      * @var HeaderCollection
