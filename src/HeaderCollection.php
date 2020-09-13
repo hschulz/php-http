@@ -1,9 +1,11 @@
 <?php
 
-namespace hschulz\Http;
+declare(strict_types=1);
 
-use \ArrayObject;
-use function \header;
+namespace Hschulz\Http;
+
+use ArrayObject;
+use function header;
 
 /**
  *
@@ -14,13 +16,13 @@ class HeaderCollection extends ArrayObject
      *
      * @var string
      */
-    const CRLF = "\r\n";
+    public const CRLF = "\r\n";
 
     /**
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         $out = '';
 
@@ -40,7 +42,6 @@ class HeaderCollection extends ArrayObject
      */
     public function addHeader(string $name, string $value): bool
     {
-
         /* Initialize the return value */
         $isSet = false;
 
@@ -63,7 +64,6 @@ class HeaderCollection extends ArrayObject
      */
     public function getHeader(string $name): string
     {
-
         /* If the parameter is found it is returned */
         return $this[$name] ?? '';
     }

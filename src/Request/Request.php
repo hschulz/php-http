@@ -1,27 +1,32 @@
 <?php
 
-namespace hschulz\Http\Request;
+declare(strict_types=1);
 
-use \hschulz\Http\HeaderCollection;
-use \hschulz\Network\AbstractIPAddress;
-use \hschulz\Network\IPv4;
-use \hschulz\Network\Port;
-use function \apache_request_headers;
-use function \filter_input_array;
-use function \function_exists;
-use function \gethostbyname;
-use function \ini_get;
-use function \is_callable;
-use function \shell_exec;
-use function \stripos;
-use function \trim;
+namespace Hschulz\Http\Request;
+
+use Hschulz\Http\HeaderCollection;
+use Hschulz\Network\AbstractIPAddress;
+use Hschulz\Network\IPv4;
+use Hschulz\Network\Port;
+use function apache_request_headers;
+use function filter_input_array;
+use function function_exists;
+use function gethostbyname;
+use function ini_get;
+use function is_callable;
+use function shell_exec;
+use function stripos;
+use function trim;
 
 /**
  *
  */
 class Request
 {
-    const SERVER_FILTER = [
+    /**
+     * @var array
+     */
+    protected const SERVER_FILTER = [
         'HTTP_HOST' => 0,
         'HTTP_USER_AGENT' => 0,
         'HTTP_ACCEPT' => 0,
@@ -41,63 +46,73 @@ class Request
 
     /**
      * The protocol used to connect.
+     *
      * @var string
      */
-    protected $protocol = '';
+    protected string $protocol = '';
 
     /**
      * The method used to connect.
+     *
      * @var string
      */
-    protected $requestMethod = '';
+    protected string $requestMethod = '';
 
     /**
      * The requested uri.
+     *
      * @var string
      */
-    protected $requestUri = '';
+    protected string $requestUri = '';
 
     /**
      * The request timestamp when the server startet the process.
+     *
      * @var int
      */
-    protected $requestTime = '';
+    protected int $requestTime = 0;
 
     /**
      * The raw body of the request.
+     *
      * @var string
      */
-    protected $rawBody = '';
+    protected string $rawBody = '';
 
     /**
      * Determines if the request uses a secure protocol.
+     *
      * @var bool
      */
-    protected $isSecure = false;
+    protected bool $isSecure = false;
 
     /**
      * The request headers.
-     * @var HeaderCollection
+     *
+     * @var HeaderCollection|null
     */
-    protected $header = null;
+    protected ?HeaderCollection $header = null;
 
     /**
      * The server ip address.
-     * @var AbstractIPAddress
+     *
+     * @var AbstractIPAddress|null
      */
-    protected $serverIp = null;
+    protected ?AbstractIPAddress $serverIp = null;
 
     /**
      * The client ip address.
-     * @var AbstractIPAddress
+     *
+     * @var AbstractIPAddress|null
      */
-    protected $remoteIp = null;
+    protected ?AbstractIPAddress $remoteIp = null;
 
     /**
      * The server port.
-     * @var Port
+     *
+     * @var Port|null
      */
-    protected $port = null;
+    protected ?Port $port = null;
 
     /**
      *
@@ -159,7 +174,7 @@ class Request
 
         $this->requestUri = $data['REQUEST_URI'] ?? '';
 
-        $this->requestTime = $data['REQUEST_TIME'] ?? '';
+        $this->requestTime = $data['REQUEST_TIME'] ?? 0;
 
         $this->isSecure = empty($data['HTTPS']) ? false : true;
     }
@@ -331,18 +346,18 @@ class Request
 
     /**
      *
-     * @return string
+     * @return int
      */
-    public function getRequestTime(): string
+    public function getRequestTime(): int
     {
         return $this->requestTime;
     }
 
     /**
      *
-     * @param string $requestTime
+     * @param int $requestTime
      */
-    public function setRequestTime(string $requestTime): void
+    public function setRequestTime(int $requestTime): void
     {
         $this->requestTime = $requestTime;
     }

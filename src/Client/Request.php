@@ -1,26 +1,27 @@
 <?php
 
-namespace hschulz\Http\Client;
+declare(strict_types=1);
 
-use \hschulz\Http\HeaderCollection;
-use const \CURLOPT_HTTPHEADER;
-use const \CURLOPT_RETURNTRANSFER;
-use const \CURLOPT_URL;
-use function \curl_exec;
-use function \curl_init;
-use function \curl_setopt;
+namespace Hschulz\Http\Client;
+
+use Hschulz\Http\HeaderCollection;
+use const CURLOPT_HTTPHEADER;
+use const CURLOPT_RETURNTRANSFER;
+use const CURLOPT_URL;
+use function curl_exec;
+use function curl_init;
+use function curl_setopt;
 
 /**
  *
  */
 class Request
 {
-
     /**
      *
      * @var HeaderCollection
      */
-    protected $header = null;
+    protected ?HeaderCollection $header = null;
 
     /**
      *
@@ -45,7 +46,6 @@ class Request
      */
     public function exec(string $url)
     {
-
         /* Temporary header storage */
         $header = [];
 

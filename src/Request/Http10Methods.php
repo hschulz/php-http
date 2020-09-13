@@ -1,6 +1,8 @@
 <?php
 
-namespace hschulz\Http\Request;
+declare(strict_types=1);
+
+namespace Hschulz\Http\Request;
 
 /**
  * Contains HTTP/1.0 request methods as constants.
@@ -13,14 +15,14 @@ interface Http10Methods
      * an entity) is identified by the Request-URI.
      * @var string
      */
-    const HTTP_METHOD_GET = 'GET';
+    public const HTTP_METHOD_GET = 'GET';
 
     /**
      * The HEAD method is identical to GET except that the server must not
      * return any Entity-Body in the response.
      * @var string
      */
-    const HTTP_METHOD_HEAD = 'HEAD';
+    public const HTTP_METHOD_HEAD = 'HEAD';
 
     /**
      * The POST method is used to request that the destination server
@@ -28,5 +30,5 @@ interface Http10Methods
      * of the resource identified by the Request-URI in the Request-Line.
      * @var string
      */
-    const HTTP_METHOD_POST = 'POST';
+    public const HTTP_METHOD_POST = 'POST';
 }

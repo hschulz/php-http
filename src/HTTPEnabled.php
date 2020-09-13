@@ -1,13 +1,14 @@
 <?php
 
-namespace hschulz\Http;
+declare(strict_types=1);
+
+namespace Hschulz\Http;
 
 /**
  *
  */
 interface HTTPEnabled extends HTTPAware
 {
-
     /**
      *
      */

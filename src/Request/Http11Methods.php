@@ -1,6 +1,8 @@
 <?php
 
-namespace hschulz\Http\Request;
+declare(strict_types=1);
+
+namespace Hschulz\Http\Request;
 
 /**
  * Contains all HTTP/1.1 request methods as constants.
@@ -17,7 +19,7 @@ interface Http11Methods extends Http10Methods
      * initiating a resource retrieval.
      * @var string
      */
-    const HTTP_METHOD_OPTIONS = 'OPTIONS';
+    public const HTTP_METHOD_OPTIONS = 'OPTIONS';
 
     /**
      * The PUT method requests that the enclosed entity be stored under the
@@ -38,7 +40,7 @@ interface Http11Methods extends Http10Methods
      * response in such cases.
      * @var string
      */
-    const HTTP_METHOD_PUT = 'PUT';
+    public const HTTP_METHOD_PUT = 'PUT';
 
     /**
      * The DELETE method requests that the origin server delete the resource
@@ -51,7 +53,7 @@ interface Http11Methods extends Http10Methods
      * resource or move it to an inaccessible location.
      * @var string
      */
-    const HTTP_METHOD_DELETE = 'DELETE';
+    public const HTTP_METHOD_DELETE = 'DELETE';
 
     /**
      * The TRACE method is used to invoke a remote, application-layer loop- back
@@ -60,12 +62,12 @@ interface Http11Methods extends Http10Methods
      * response.
      * @var string
      */
-    const HTTP_METHOD_TRACE = 'TRACE';
+    public const HTTP_METHOD_TRACE = 'TRACE';
 
     /**
      * This specification reserves the method name CONNECT for use with a proxy
      * that can dynamically switch to being a tunnel.
      * @var string
      */
-    const HTTP_METHOD_CONNECT = 'CONNECT';
+    public const HTTP_METHOD_CONNECT = 'CONNECT';
 }

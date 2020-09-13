@@ -1,26 +1,27 @@
 <?php
 
-namespace hschulz\Http\Response;
+declare(strict_types=1);
 
-use \hschulz\Http\HeaderCollection;
+namespace Hschulz\Http\Response;
+
+use Hschulz\Http\HeaderCollection;
 
 /**
  *
  */
 class Response
 {
-
     /**
      * The response headers sent when sending the response.
-     * @var HeaderCollection
+     * @var HeaderCollection|null
      */
-    protected $header = null;
+    protected ?HeaderCollection $header = null;
 
     /**
      *
      * @var string
      */
-    protected $body = '';
+    protected string $body = '';
 
     /**
      *
@@ -35,7 +36,7 @@ class Response
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->header . $this->body;
     }
