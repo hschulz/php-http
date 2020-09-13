@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Hschulz\Http\Request;
 
-use Hschulz\Http\HeaderCollection;
-use Hschulz\Network\AbstractIPAddress;
-use Hschulz\Network\IPv4;
-use Hschulz\Network\Port;
 use function apache_request_headers;
 use function filter_input_array;
 use function function_exists;
 use function gethostbyname;
+use Hschulz\Http\HeaderCollection;
+use Hschulz\Network\AbstractIPAddress;
+use Hschulz\Network\IPv4;
+use Hschulz\Network\Port;
 use function ini_get;
 use function is_callable;
 use function shell_exec;
